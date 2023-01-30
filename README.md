@@ -15,3 +15,4 @@ make locate
 to produce a new set of `*_loc.html` files that have suitable links
 for browsing contents of the folders.
 
+The MIND_ARCHIVE.html will in turn navigate the `*_loc.html` files.
