@@ -1,0 +1,137 @@
+---
+title: "MIND Trial Laboratory measures"
+author: "NIA MIND Trial Data Coordinators"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{MIND Trial Laboratory measures}
+  %\VignetteEncoding{UTF-8}
+output:
+  rmarkdown::pdf_document:
+    toc: yes
+    number_sections: yes
+  rmarkdown::html_document:
+    highlight: pygments
+    number_sections: yes
+    theme: united
+    toc: yes
+---
+
+<!--
+DUA_apoe4.csv		      duam12antioxidants.sas7bdat  DUA_M36Labresults.pdf
+DUA_apoe4.pdf		      DUA_m12fattyacid.csv	   duam36mindlabres.sas7bdat
+duaapoe4.sas7bdat	      DUA_m12fattyacid.pdf	   DUA_m36urine.csv
+DUA_baseantioxidants.csv      duam12fattyacid.sas7bdat	   DUA_m36urine.pdf
+DUA_baseantioxidants.pdf      DUA_m12urine.csv		   duam36urine.sas7bdat
+duabaseantioxidants.sas7bdat  DUA_m12urine.pdf		   DUA_m3antioxidants.csv
+DUA_basefattyacid.csv	      duam12urine.sas7bdat	   DUA_m3antioxidants.pdf
+DUA_basefattyacid.pdf	      DUA_m24antioxidants.csv	   duam3antioxidants.sas7bdat
+duabasefattyacid.sas7bdat     DUA_m24antioxidants.pdf	   DUA_m3fattyacid.csv
+DUA_Baselabresults.csv	      duam24antioxidants.sas7bdat  DUA_m3fattyacid.pdf
+DUA_BaseLabresults.pdf	      DUA_m24urine.csv		   duam3fattyacid.sas7bdat
+duabasemindlabres.sas7bdat    DUA_m24urine.pdf		   DUA_M3labresults.csv
+DUA_baseurine.csv	      duam24urine.sas7bdat	   DUA_M3Labresults.pdf
+DUA_baseurine.pdf	      DUA_m36antioxidants.csv	   duam3mindlabres.sas7bdat
+duabaseurine.sas7bdat	      DUA_m36antioxidants.pdf	   DUA_m3urine.csv
+DUA_m12antioxidants.csv       duam36antioxidants.sas7bdat  DUA_m3urine.pdf
+DUA_m12antioxidants.pdf       DUA_M36labresults.csv	   duam3urine.sas7bdat
+
+antiox
+urine
+fattyacid
+other
+-->
+
+# MIND FFQ/Diet Recall Archive
+
+```{r lk1,echo=FALSE,results="hide",message=FALSE}
+library(htmltools)
+library(R.utils)
+fis = getAbsolutePath(dir("Laboratory", full=TRUE))
+
+afis = grep("antiox", fis, value=TRUE)
+apdfs = grep("pdf$", afis, value=TRUE)  # subordinate
+acsvs = grep("csv$", afis, value=TRUE)
+asass = grep("sas7bdat$", afis, value=TRUE)
+
+ufis = grep("urine", fis, value=TRUE)
+updfs = grep("pdf$", ufis, value=TRUE)  # subordinate
+ucsvs = grep("csv$", ufis, value=TRUE)
+usass = grep("sas7bdat$", ufis, value=TRUE)
+
+ffis = grep("fatty", fis, value=TRUE)
+fpdfs = grep("pdf$", ffis, value=TRUE)  # subordinate
+fcsvs = grep("csv$", ffis, value=TRUE)
+fsass = grep("sas7bdat$", ffis, value=TRUE)
+
+makeAnch = function(x) as.character(p(a(basename(x), href=paste0("file://", x))))
+qaire_index = grep("1V", pdfs)
+```
+
+## Antioxidant measures
+
+### Codebooks
+
+```{r procpd, echo=FALSE}
+z = sapply(apdfs, makeAnch)
+HTML(z)
+```
+
+## CSV
+
+```{r proccs, echo=FALSE}
+z = sapply(acsvs, makeAnch)
+HTML(z)
+```
+
+## SAS
+
+```{r procsa, echo=FALSE}
+z = sapply(asass, makeAnch)
+HTML(z)
+```
+
+## Urine measures
+
+### Codebooks
+
+```{r uprocpd, echo=FALSE}
+z = sapply(updfs, makeAnch)
+HTML(z)
+```
+
+## CSV
+
+```{r uproccs, echo=FALSE}
+z = sapply(ucsvs, makeAnch)
+HTML(z)
+```
+
+## SAS
+
+```{r uprocsa, echo=FALSE}
+z = sapply(usass, makeAnch)
+HTML(z)
+```
+
+## Fatty acid measures
+
+### Codebooks
+
+```{r fprocpd, echo=FALSE}
+z = sapply(fpdfs, makeAnch)
+HTML(z)
+```
+
+## CSV
+
+```{r fproccs, echo=FALSE}
+z = sapply(fcsvs, makeAnch)
+HTML(z)
+```
+
+## SAS
+
+```{r fprocsa, echo=FALSE}
+z = sapply(fsass, makeAnch)
+HTML(z)

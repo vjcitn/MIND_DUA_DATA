@@ -1,0 +1,52 @@
+---
+title: "MIND MRI data archive"
+author: "NIA MIND Trial Data Coordinators"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{MIND MRI data archive}
+  %\VignetteEncoding{UTF-8}
+output:
+  rmarkdown::pdf_document:
+    toc: yes
+    number_sections: yes
+  rmarkdown::html_document:
+    highlight: pygments
+    number_sections: yes
+    theme: united
+    toc: yes
+---
+
+# MIND MRI data arcive
+
+```{r lk1,echo=FALSE,results="hide",message=FALSE}
+library(htmltools)
+library(R.utils)
+fis = getAbsolutePath(dir("MRI", full=TRUE))
+pdfs = grep("pdf$", fis, value=TRUE)
+csvs = grep("csv$", fis, value=TRUE)
+sass = grep("sas7bdat$", fis, value=TRUE)
+makeAnch = function(x) as.character(p(a(basename(x), href=paste0("file://", x))))
+```
+
+
+## Codebooks
+
+```{r procpd, echo=FALSE}
+z = sapply(pdfs, makeAnch)
+HTML(z)
+```
+
+## CSV
+
+```{r proccs, echo=FALSE}
+z = sapply(csvs, makeAnch)
+HTML(z)
+```
+
+## SAS
+
+```{r procsa, echo=FALSE}
+z = sapply(sass, makeAnch)
+HTML(z)
+```

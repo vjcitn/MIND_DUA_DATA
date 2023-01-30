@@ -1,0 +1,59 @@
+---
+title: "MIND Screening and Baseline data"
+author: "NIA MIND Trial Data Coordinators"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{MIND SAE and COVID data}
+  %\VignetteEncoding{UTF-8}
+output:
+  rmarkdown::pdf_document:
+    toc: yes
+    number_sections: yes
+  rmarkdown::html_document:
+    highlight: pygments
+    number_sections: yes
+    theme: united
+    toc: yes
+---
+
+# MIND Screening and Baseline data
+
+```{r lk1,echo=FALSE,results="hide",message=FALSE}
+library(htmltools)
+library(R.utils)
+fis = getAbsolutePath(dir("ScreeningAndBaseline", full=TRUE))
+pdfs = grep("pdf$", fis, value=TRUE)
+csvs = grep("csv$", fis, value=TRUE)
+sass = grep("sas7bdat$", fis, value=TRUE)
+makeAnch = function(x) as.character(p(a(basename(x), href=paste0("file://", x))))
+qaire_index = grep("[Vv]1", pdfs)
+```
+
+## Questionnaire(s)
+
+```{r getl1,echo=FALSE}
+z = sapply(pdfs[qaire_index], makeAnch)
+HTML(z)
+```
+
+## Codebooks
+
+```{r procpd, echo=FALSE}
+z = sapply(pdfs[-qaire_index], makeAnch)
+HTML(z)
+```
+
+## CSV
+
+```{r proccs, echo=FALSE}
+z = sapply(csvs, makeAnch)
+HTML(z)
+```
+
+## SAS
+
+```{r procsa, echo=FALSE}
+z = sapply(sass, makeAnch)
+HTML(z)
+```
