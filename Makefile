@@ -14,10 +14,22 @@ MIND_InterviewQ_MM_nopath.html: MIND_InterviewQ_MM.Rmd
 SAE_COVIDQ_nopath.html: SAE_COVIDQ.Rmd
 
 Blood_Pressure_loc.html: Blood_Pressure_nopath.html
+FFQ_DR_loc.html: FFQ_DR_nopath.html
+Medication_usage_loc.html: Medication_usage_nopath.html
+MRI_loc.html: MRI_nopath.html
+ScreeningAndBaseline_loc.html: ScreeningAndBaseline_nopath.html
+Cognitive_Assessment_loc.html: Cognitive_Assessment_nopath.html
+Laboratory_loc.html: Laboratory_nopath.html
+MIND_InterviewQ_MM_loc.html: MIND_InterviewQ_MM_nopath.html
+SAE_COVIDQ_loc.html: SAE_COVIDQ_nopath.html
 
 unlocate: Blood_Pressure_nopath.html FFQ_DR_nopath.html Medication_usage_nopath.html \
 	MRI_nopath.html ScreeningAndBaseline_nopath.html Cognitive_Assessment_nopath.html \
 	Laboratory_nopath.html MIND_InterviewQ_MM_nopath.html SAE_COVIDQ_nopath.html
+
+locate: Blood_Pressure_loc.html FFQ_DR_loc.html Medication_usage_loc.html \
+	MRI_loc.html ScreeningAndBaseline_loc.html Cognitive_Assessment_loc.html \
+	Laboratory_loc.html MIND_InterviewQ_MM_loc.html SAE_COVIDQ_loc.html
 
 %.html:%.Rmd
 	R -e "rmarkdown::render('$<', rmarkdown::html_document())"
